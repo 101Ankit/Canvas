@@ -56,6 +56,7 @@ function Circle(x,y,dx,dy,radius)
 c.arc(this.x, this.y,this.radius, 0, Math.PI * 2,false);
 c.strokeStyle='blue';
 c.stroke();
+c.fill();
 	}
  this.update = function(){
 if(this.x + this.radius >innerWidth || this.x - this.radius < 0)
@@ -75,11 +76,12 @@ this.draw();
    var circleArray=[];
  for(var i=0;i<100;i++)
  {
- 	var x=Math.random() * innerWidth;
-	var y=Math.random() * innerHeight
+ 	var radius=30;
+ 	var x=Math.random() * (innerWidth - radius * 2) + radius; //substract the diameter of the circle from the innerWidth of the circle so that it does'nt gets caught up in right side of the screen and add radius so that the same does'nt happen on the other side;
+	var y=Math.random() * (innerHeight -radius * 2) + radius; 
     var dx = Math.random()- 0.5 ;//velocity of x;
     var dy=Math.random()-0.5 ;
-    var radius=30;
+    
  	circleArray.push(new Circle(x,y,dx,dy,radius));
  }
 
