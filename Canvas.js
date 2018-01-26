@@ -28,10 +28,7 @@ c.arc(x:Int, y: Int, r: Int,
 	startAngle:Float, EndAngle:Float
 	drawCounterClockwise: Bool (false));
 */
-c.beginPath()
-c.arc(250, 250,30, 0, Math.PI * 2,false);
-c.strokeStyle='blue';
-c.stroke();
+
 /*
 //multiple-circles using for loop
 for(let i=0; i< 1000; i++)
@@ -46,3 +43,30 @@ for(let i=0; i< 1000; i++)
     c.stroke();
 }
 */
+	var x=Math.random() * innerWidth;
+	var y=Math.random() * innerHeight
+    var dx = Math.random()- 0.5 * 8;//velocity of x;
+    var dy=Math.random()-0.5 * 8;
+    var radius=30;
+function animate(){
+
+	requestAnimationFrame(animate);
+c.clearRect(0,0,innerWidth,innerHeight);
+	c.beginPath()
+c.arc(x, y,30, 0, Math.PI * 2,false);
+c.strokeStyle='blue';
+c.stroke();
+if(x + radius >innerWidth || x - radius < 0)
+{
+	dx=-dx;
+}
+if(y + radius > innerHeight || y - radius < 0)
+{
+	dy=-dy;
+}
+x+= dx;
+y+=dy;
+ 
+}
+animate();
+
